@@ -1,1 +1,35 @@
-<h1>Testing:</h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Testing</h1>
+<script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+
+<script>
+    console.log('script here')
+    //const WebTorrent = require('webtorrent')
+    const client = new WebTorrent()
+
+
+    const torrentId = 'magnet:?xt=urn:btih:c9e15763f722f23e98a29decdfae341b98d53056&dn=Cosmos+Laundromat&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.empire-js.us%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com&ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2F&xs=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2Fcosmos-laundromat.torrent'
+
+    client.add(torrentId, function (torrent) {
+        // Torrents can contain many files. Let's use the .mp4 file
+        const file = torrent.files.find(function (file) {
+            console.log(file)
+            return file.name.endsWith('.mp4')
+        })
+
+        // Display the file by adding it to the DOM.
+        // Supports video, audio, image files, and more!
+        file.appendTo('body')
+    })
+</script>
+</body>
+</html>
